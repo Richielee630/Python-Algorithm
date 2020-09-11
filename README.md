@@ -8,7 +8,11 @@ When you're done, you can delete the content in this README and update the file 
 
 ## Edit a file
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket. ##zhaoqin 
+<<<<<<< HEAD
+You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+=======
+You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+>>>>>>> 887efd6952e28ad5b46f8e4a32a123f6a80b704c
 
 1. Click **Source** on the left side.
 2. Click the README.md link from the list of files.
