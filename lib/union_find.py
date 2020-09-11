@@ -1,6 +1,6 @@
 
 
-# 1. quick-find
+# 1. quick-find11
 # 2. quick-union
 # 3. weighted QU
 # 4. QU + path compression
