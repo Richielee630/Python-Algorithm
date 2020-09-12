@@ -1,4 +1,5 @@
 
+
 # 1. quick-find
 # 2. quick-union
 # 3. weighted QU
@@ -7,7 +8,7 @@
 
 import time
 import random
-from math import log
+from math import log 
 import matplotlib.pyplot as plt
 
 class UF(object):
@@ -36,14 +37,14 @@ class UF(object):
 
         """
 
-        if self.qf_connected(p ,q):
+        if self.qf_connected(p,q):
             return True
 
         pid = self.id[p]
         for i in range(len(self.id)):
             if self.id[i] == pid:
                 self.id[i] = self.id[q]
-        return True
+        return True 
 
 
     def qf_connected(self, p, q):
@@ -51,7 +52,7 @@ class UF(object):
         simply test whether p and q are connected
 
         """
-        return self.id[p] == self.id[q]
+        return self.id[p] == self.id[q] 
 
 
 
@@ -61,17 +62,17 @@ class UF(object):
 
          """
 
-        if self.qu_connected(p ,q):
+        if self.qu_connected(p,q):
             return True
 
-        p_pa ,q_pa = p ,q
+        p_pa,q_pa = p,q
         while p_pa != self.id[p_pa]:
             p_pa = self.id[p_pa]
         while q_pa != self.id[q_pa]:
             q_pa = self.id[q_pa]
         self.id[p_pa] = q_pa
 
-        return True
+        return True 
 
 
     def qu_connected(self, p, q):
@@ -79,13 +80,13 @@ class UF(object):
          test whether p and q are connected
 
          """
-        p_pa ,q_pa = p ,q
+        p_pa,q_pa = p,q
         while p_pa != self.id[p_pa]:
             p_pa = self.id[p_pa]
         while q_pa != self.id[q_pa]:
             q_pa = self.id[q_pa]
-
-        return  p_pa == q_pa
+         
+        return  p_pa == q_pa 
 
 
     def wqu_union(self, p, q):
@@ -93,23 +94,23 @@ class UF(object):
          connect p and q.
 
          """
-
-        if self.wqu_connected(p ,q):
+        
+        if self.wqu_connected(p,q):
             return True
-
-        p_pa ,q_pa = p ,q
+        
+        p_pa,q_pa = p,q
         while p_pa != self.id[p_pa]:
             p_pa = self.id[p_pa]
         while q_pa != self.id[q_pa]:
             q_pa = self.id[q_pa]
-
+         
         if self.sz[p_pa] >= self.sz[q_pa]:
             self.id[q_pa] = p_pa
-            self.sz[p_pa] += self.sz[q_pa]
+            self.sz[p_pa] += self.sz[q_pa] 
         else:
             self.id[p_pa] = q_pa
-            self.sz[q_pa] += self.sz[p_pa]
-        return True
+            self.sz[q_pa] += self.sz[p_pa] 
+        return True 
 
 
     def wqu_connected(self, p, q):
@@ -117,8 +118,8 @@ class UF(object):
          test whether p and q are connected
 
          """
-
-        return self.qu_connected(p ,q)
+         
+        return self.qu_connected(p,q) 
 
 
     def pqu_union(self, p, q):
@@ -126,10 +127,10 @@ class UF(object):
          connect p and q.
 
         """
-        if self.pqu_connected(p ,q):
+        if self.pqu_connected(p,q):
             return True
         self.id[self.id[p]] = self.id[q]
-        return True
+        return True 
 
 
     def pqu_connected(self, p, q):
@@ -137,7 +138,7 @@ class UF(object):
          test whether p and q are connected
 
          """
-        p_pa ,q_pa = [p] ,[q]
+        p_pa,q_pa = [p],[q]
         while p_pa[-1] != self.id[p_pa[-1]]:
             p_pa.append(self.id[p_pa[-1]])
         while q_pa[-1] != self.id[q_pa[-1]]:
@@ -146,25 +147,25 @@ class UF(object):
             self.id[idx] = p_pa[-1]
         for idx in q_pa:
             self.id[idx] = q_pa[-1]
-        return self.id[p ]= =self.id[q]
+        return self.id[p]==self.id[q]
 
     def wpqu_union(self, p, q):
         """Union operation for Weighted path compressed Quick-Union Algorithm.
          connect p and q.
 
          """
-        if self.wpqu_connected(p ,q):
+        if self.wpqu_connected(p,q):
             return True;
-
-        p_pa ,q_pa = self.id[p] ,self.id[q]
-
+        
+        p_pa,q_pa = self.id[p],self.id[q]
+         
         if self.sz[p_pa] >= self.sz[q_pa]:
             self.id[q_pa] = p_pa
-            self.sz[p_pa] += self.sz[q_pa]
+            self.sz[p_pa] += self.sz[q_pa] 
         else:
             self.id[p_pa] = q_pa
-            self.sz[q_pa] += self.sz[p_pa]
-        return True
+            self.sz[q_pa] += self.sz[p_pa] 
+        return True 
 
 
     def wpqu_connected(self, p, q):
@@ -173,12 +174,12 @@ class UF(object):
 
          """
 
-        return self.pqu_connected(p ,q)
+        return self.pqu_connected(p,q) 
 
 if __name__ == "__main__":
 
     # iteration
-    set_szs = [1e1 ,1e2 ,1e3 ,1e4 ,1e5 ,1e6]
+    set_szs = [1e1,1e2,1e3,1e4,1e5,1e6]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
