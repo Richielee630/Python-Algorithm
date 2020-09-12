@@ -62,7 +62,7 @@ class UF(object):
 
          """
 
-        if self.qu_connected(p,q):
+        if self.qu_connected(p, q):
             return True
 
         p_pa,q_pa = p,q
@@ -80,7 +80,7 @@ class UF(object):
          test whether p and q are connected
 
          """
-        p_pa,q_pa = p,q
+        p_pa, q_pa = p, q
         while p_pa != self.id[p_pa]:
             p_pa = self.id[p_pa]
         while q_pa != self.id[q_pa]:
@@ -95,7 +95,7 @@ class UF(object):
 
          """
         
-        if self.wqu_connected(p,q):
+        if self.wqu_connected(p, q):
             return True
         
         p_pa,q_pa = p,q
@@ -179,7 +179,7 @@ class UF(object):
 if __name__ == "__main__":
 
     # iteration
-    set_szs = [1e1,1e2,1e3,1e4,1e5,1e6]
+    set_szs = [1e1,1e2,1e3,1e4,1e5,1e6,1e7,1e8]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
