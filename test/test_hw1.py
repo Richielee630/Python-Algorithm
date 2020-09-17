@@ -1,5 +1,5 @@
 
-import lib.hw1.union_find
+import lib.union_find
 
 class Test_UF(object):
     @classmethod

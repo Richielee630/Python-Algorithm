@@ -179,7 +179,7 @@ class UF(object):
 if __name__ == "__main__":
 
     # iteration
-    set_szs = [1e1,1e2,1e3,1e4,1e5,1e6,1e7,1e8]
+    set_szs = [1e1,1e2,1e3,1e4,1e5,1e6,1e7]
     timing = []
 
     # gives the timing for union operation only, you might want to do this for all functions you wrote.
