@@ -210,5 +210,5 @@ if __name__ == "__main__":
     plt.xscale('log')
     plt.yscale('log')
     plt.title('log')
-    plt.ylabel('some numbers')
+    plt.ylabel('running times')
     plt.show()
