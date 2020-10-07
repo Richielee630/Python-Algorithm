@@ -7,7 +7,9 @@
 
 import time
 import random
-#import matplotlib.pyplot as plt
+
+
+# import matplotlib.pyplot as plt
 
 class Sorting(object):
     """Sorting class
@@ -16,7 +18,6 @@ class Sorting(object):
 
     def __init__(self):
         self.id = []
-
 
     def sort_init(self, N):
         """initialize the data structure
@@ -28,8 +29,7 @@ class Sorting(object):
         except ValueError:
             print('Sample size exceeded population size.')
 
-
-        #self.id = [random.randint(0, N - 1) for i in range(N)]
+        self.id = [random.randint(0, N - 1) for i in range(N)]
 
     def get_id(self):
         """initialize the data structure
@@ -37,7 +37,6 @@ class Sorting(object):
         """
 
         return self.id
-
 
     def selection_sort(self):
         """Selection sort algorithm is an
@@ -49,7 +48,7 @@ class Sorting(object):
         for i_idx, i_item in enumerate(self.id):
             min = i_idx
 
-            for j_idx in range(i_idx+1, len(self.id)):
+            for j_idx in range(i_idx + 1, len(self.id)):
 
                 if (self.id[j_idx] < self.id[min]):
                     min = j_idx
@@ -58,7 +57,6 @@ class Sorting(object):
             temp = self.id[i_idx]
             self.id[i_idx] = self.id[min]
             self.id[min] = temp
-
 
         return self.id
 
@@ -91,15 +89,13 @@ class Sorting(object):
                     k = k - span
                 j += span
 
-
-def shell_sort(self):
+    def shell_sort(self):
         """Shell sort also known as  or Shell's method, is an in-place comparison sort.
         It can be seen as either a generalization of sorting by exchange (bubble sort)
         or sorting by insertion (insertion sort).
 
         """
-
-        span = (len(self.id)+1)/2
+        span = (len(self.id) + 1) / 2
         while span >= 1:
             self.shell_sort2(int(span))
             span /= 2
@@ -120,10 +116,8 @@ def shell_sort(self):
         sort, which means that the implementation preserves the input order
         of equal elements in the sorted output.
         """
-
-        self.merge_sort2(0,len(self.id))
+        self.merge_sort2(0, len(self.id))
         return self.id
-
 
     def quick_sort(self):
         """Quicksort (sometimes called partition-exchange sort) is an efficient
