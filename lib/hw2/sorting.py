@@ -70,16 +70,40 @@ class Sorting(object):
 
         """
 
-        return 1
+        for i_idx, i_item in enumerate(self.id):
+            pos = i_idx
+            while pos > 0 and self.id[pos] < self.id[pos - 1]:
+                tmp = self.id[pos]
+                self.id[pos] = self.id[pos - 1]
+                self.id[pos - 1] = tmp
+                pos -= 1
+        return self.id
 
-    def shell_sort(self):
+    def shell_sort2(self, span):
+        for i in range(span):
+            j = i
+            while j < len(self.id):
+                k = j
+                while k - span >= 0 and self.id[k] < self.id[k - span]:
+                    tmp = self.id[k]
+                    self.id[k] = self.id[k - span]
+                    self.id[k - span] = tmp
+                    k = k - span
+                j += span
+
+
+def shell_sort(self):
         """Shell sort also known as  or Shell's method, is an in-place comparison sort.
         It can be seen as either a generalization of sorting by exchange (bubble sort)
         or sorting by insertion (insertion sort).
 
         """
 
-        return 1
+        span = (len(self.id)+1)/2
+        while span >= 1:
+            self.shell_sort2(int(span))
+            span /= 2
+        return self.id
 
     def heap_sort(self):
         """Heapsort is an improved selection sort: it divides its input into a sorted
@@ -97,7 +121,9 @@ class Sorting(object):
         of equal elements in the sorted output.
         """
 
-        return 1
+        self.merge_sort2(0,len(self.id))
+        return self.id
+
 
     def quick_sort(self):
         """Quicksort (sometimes called partition-exchange sort) is an efficient
