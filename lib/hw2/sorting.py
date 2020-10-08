@@ -107,6 +107,59 @@ class Sorting(object):
         extracting the largest element and moving that to the sorted region.
 
         """
+        for i in range(len(self.id)):
+            nr = (i + 1) * 2
+            nl = nr - 1
+            if nl < len(self.id) and self.id[i] < self.id[nl]:
+                tmp = self.id[i]
+                self.id[i] = self.id[nl]
+                self.id[nl] = tmp
+                j = i
+                while j != 0 and self.id[j] > self.id[int((j - 1) / 2)]:
+                    tmp = self.id[j]
+                    self.id[j] = self.id[int((j - 1) / 2)]
+                    self.id[int((j - 1) / 2)] = tmp
+                    j = int((j - 1) / 2)
+            if nr < len(self.id) and self.id[i] < self.id[nr]:
+                tmp = self.id[i]
+                self.id[i] = self.id[nr]
+                self.id[nr] = tmp
+                j = i
+                while j != 0 and self.id[j] > self.id[int((j - 1) / 2)]:
+                    tmp = self.id[j]
+                    self.id[j] = self.id[int((j - 1) / 2)]
+                    self.id[int((j - 1) / 2)] = tmp
+                    j = int((j - 1) / 2)
+        p = len(self.id) - 1
+        while p > 0:
+            tmp = self.id[p]
+            self.id[p] = self.id[0]
+            self.id[0] = tmp
+            i = 0
+            while i < p:
+                nr = (i + 1) * 2
+                nl = nr - 1
+                j = i
+                if nr < p and self.id[nr] > self.id[nl]:
+                    if self.id[nr] < self.id[i]:
+                        break
+                    tmp = self.id[i]
+                    self.id[i] = self.id[nr]
+                    self.id[nr] = tmp
+                    i = nr
+                elif nl < p and self.id[nl] > self.id[i]:
+                    tmp = self.id[i]
+                    self.id[i] = self.id[nl]
+                    self.id[nl] = tmp
+                    i = nl
+                else:
+                    break
+                while j != 0 and self.id[j] > self.id[int((j - 1) / 2)]:
+                    tmp = self.id[j]
+                    self.id[j] = self.id[int((j - 1) / 2)]
+                    self.id[int((j - 1) / 2)] = tmp
+                    j = int((j - 1) / 2)
+            p = p - 1
 
         return 1
 
