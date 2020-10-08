@@ -203,19 +203,51 @@ class Sorting(object):
         three times faster than its main competitors, merge sort and heapsort.
 
         """
-
-        return 1
-
+        stack = [0, len(self.id) - 1]
+        while len(stack) != 0:
+            e = stack.pop()
+            s = stack.pop()
+            if s >= e:
+                continue
+            pivot = self.id[s]
+            l, r = s, e
+            p = l
+            while p <= r:
+                if self.id[p] > pivot:
+                    tmp = self.id[p]
+                    self.id[p] = self.id[r]
+                    self.id[r] = tmp
+                    r -= 1
+                elif self.id[p] < pivot:
+                    tmp = self.id[p]
+                    self.id[p] = self.id[l]
+                    self.id[l] = tmp
+                    l += 1
+                    p += 1
+                else:
+                    p += 1
+            stack.append(s)
+            stack.append(l - 1)
+            stack.append(r + 1)
+            stack.append(e)
+        return self.id
 
     # this plots things in log scale (pls google it), you need to add matplotlib
     # to your virtualenv first!
 
     # plot also python's sorted() function to see how well you do.
-
-
-    # plt.plot(set_szs, timing)
-    # plt.xscale('log')
-    # plt.yscale('log')
-    # plt.title('log')
-    # plt.ylabel('some numbers')
-    # plt.show()
+# s = Sorting()
+# s.sort_init(20)
+# s.selection_sort()
+# s.insertion_sort()
+# s.shell_sort()
+# s.heap_sort()
+# s.merge_sort()
+# s.quick_sort()
+# print(s.id)
+# plt.plot(set_szs, timing)
+# plt.xscale('log')
+# plt.yscale('log')
+# plt.title('log')
+# plt.ylabel('some numbers')
+# plt.show()
