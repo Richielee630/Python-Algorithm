@@ -161,7 +161,31 @@ class Sorting(object):
                     j = int((j - 1) / 2)
             p = p - 1
 
-        return 1
+        return self.id
+
+    def merge_sort2(self, l, r):
+        if l >= r - 1:
+            return 1
+        mid = int(l + (r - l) / 2)
+        self.merge_sort2(l, mid)
+        self.merge_sort2(mid, r)
+        tmp = []
+        p1, p2 = l, mid
+        while p1 < mid and p2 < r:
+            if self.id[p1] <= self.id[p2]:
+                tmp.append(self.id[p1])
+                p1 += 1
+            else:
+                tmp.append(self.id[p2])
+                p2 += 1
+        while p1 < mid:
+            tmp.append(self.id[p1])
+            p1 += 1
+        while p2 < r:
+            tmp.append(self.id[p2])
+            p2 += 1
+        for idx, item in enumerate(tmp):
+            self.id[l + idx] = item
 
     def merge_sort(self):
         """Merge sort is a divide and conquer algorithm that was invented
