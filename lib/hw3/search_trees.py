@@ -1,4 +1,3 @@
-
 import time
 import random
 
@@ -16,11 +15,23 @@ class Array_Search:
         for num in self.array:
             if num == key:
                 return idx
-            idx = idx+1
+            idx = idx + 1
         return False
 
     def bsearch(self, val):
 
+        l, e = 0, len(self.array) - 1
+        while l + 1 < e:
+            m = l + ((e - l) >> 1)
+            if val < self.array[m]:
+                e = m
+            else:
+                l = m
+
+        if self.array[l] == val:
+            return True
+        if self.array[e] == val:
+            return True
         return False
 
 
@@ -39,14 +50,25 @@ class BST:
         self.root = BST_Node(val)
 
     def insert(self, val):
-        if (self.root is None):
+        if self.root is None:
             self.init_bst(val)
         else:
             self.insertNode(self.root, val)
 
     def insertNode(self, current, val):
 
-        return False
+        p, cur = None, self.root
+        while cur is not None:
+            p = cur
+            if cur.val == val:
+                break
+            if val < cur.val:
+                cur = cur.left
+            else:
+                cur = cur.right
+
+        if cur is not None:
+            return False
 
     def bsearch(self, val):
 
